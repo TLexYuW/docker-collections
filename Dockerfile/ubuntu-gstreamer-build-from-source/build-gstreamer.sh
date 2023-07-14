@@ -1,3 +1,6 @@
+#!/bin/bash
+cd / && cd /home/gstreamer
+
 # Current Directory: /gstreamer
 meson build
 

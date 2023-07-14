@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 echo "cd to /home"
 cd /home 
@@ -18,11 +18,14 @@ tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
 deb [arch=amd64] http://ubuntu.openvidu.io/7.0.0 $DISTRIB_CODENAME main
 EOF
 
-apt-get update
-
-apt-get install -y kurento-media-server
+apt-get update && apt-get install -y kurento-media-server
 echo "midea server install done!"
 
 echo "replace default media server configs"
 cp -r /home/configs/. /etc/kurento/modules/kurento
 
+cd / && cd /usr/bin/
+
+./kurento-media-server
+
+# tail -f /dev/null
