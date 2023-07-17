@@ -27,7 +27,7 @@ docker run -d \
     -p 8888:8888/tcp \
     -p 5000-5300:5000-5300/udp \
     --mount type=bind,src="[YOUR-HOST-LOCATION]",dst=/home/configs \
-    --mount type=bind,src="[YOUR-HOST-LOCATION]",dst=/home/gstreamer \
+    # --mount type=bind,src="[YOUR-HOST-LOCATION]",dst=/home/gstreamer \
     focal-gstreamer-build-from-source:latest
 ```
 

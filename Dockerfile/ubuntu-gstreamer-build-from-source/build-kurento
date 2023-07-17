@@ -20,8 +20,7 @@ apt-get update && apt-get install --no-install-recommends kurento-media-server-d
 # cd ..
 
 # OPTION.2
-cd /
-cd /home
+# cd /home
 
 git clone https://github.com/Kurento/kurento.git
 cd kurento/
@@ -31,3 +30,5 @@ git submodule update --init --recursive
 export MAKEFLAGS="-j$(nproc)"
 
 bin/build-run.sh
+
+tail -f /dev/null

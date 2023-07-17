@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:mantic
 
 COPY . /home
 
@@ -9,4 +9,4 @@ RUN apt-get update && apt-get install --no-install-recommends -y gnupg
 
 WORKDIR /home
 
-CMD ["./cmd.sh"]
+CMD ["./cmd"]

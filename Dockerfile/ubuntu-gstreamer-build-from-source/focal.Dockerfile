@@ -1,7 +1,8 @@
 FROM ubuntu:focal
 
 ENV LANG en_US.utf8
-ENV DISPLAY=:0
+# ENV DISPLAY=:0
+ENV GST_DEBUG="${GST_DEBUG:-2},Kurento*:5,KurentoWebSocket*:4"
 
 COPY cmd.sh /home
 COPY build-gstreamer.sh /home
@@ -27,7 +28,7 @@ RUN apt-get update && apt-get install -y bison
 
 RUN apt-get update && apt-get install -y gcc g++
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install -y cmake
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y cmake
 
 RUN apt-get update && apt-get install -y git
 
@@ -45,4 +46,4 @@ RUN apt-get update && apt-get install nano
 
 WORKDIR /home
 
-ENTRYPOINT ["./cmd.sh"]
+ENTRYPOINT ["./cmd"]

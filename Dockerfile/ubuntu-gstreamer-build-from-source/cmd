@@ -3,11 +3,30 @@
 echo "cd to /home"
 cd /home
 
-echo "use pip3 install higher version meson"
 apt-get update && pip3 install meson
+apt-get update && pip3 install ninja
 
-# echo "git clone gstreamer"
-# git clone https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+# if [ -x "/usr/bin/meson" ]
+# then
+#     echo "already installed"
+
+# else
+#     echo "use pip3 install higher version meson"
+#     apt-get update && pip3 install meson
+#     apt-get update && pip3 install ninja
+
+# fi
+
+# Check if the gstreamer folder exist in /home
+if [ ! -d "/home/gstreamer" ]
+then
+    echo "git clone gstreamer"
+    git clone https://gitlab.freedesktop.org/gstreamer/gstreamer.git
+
+else
+    echo "gstreamer already exists under /home"
+    
+fi
 
 if [ -x "/usr/bin/kurento-media-server" ]
 then 
