@@ -4,10 +4,10 @@ ENV LANG en_US.utf8
 # ENV DISPLAY=:0
 ENV GST_DEBUG="${GST_DEBUG:-2},Kurento*:5,KurentoWebSocket*:4"
 
-COPY cmd.sh /home
-COPY build-gstreamer.sh /home
-COPY build-kurento.sh /home
-COPY test-gstreamer.sh /home
+COPY cmd /home
+COPY build-gstreamer /home
+COPY build-kurento /home
+COPY test-gstreamer /home
 
 RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
