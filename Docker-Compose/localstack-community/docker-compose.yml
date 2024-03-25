@@ -11,6 +11,7 @@ services:
       # LocalStack configuration: https://docs.localstack.cloud/references/configuration/
       - DEBUG=1
       - LS_LOG=debug
+      - SERVICES=lambda,s3,sqs,sns
       - SQS_ENABLE_MESSAGE_RETENTION_PERIOD=1
     volumes:
       # - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
