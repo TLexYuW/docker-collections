@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      # MacOS
+      # - ~/docker-data/rabbitmq:/var/lib/rabbitmq
+      # Windows
+      - D:/DockerMount/rabbitmq:/var/lib/rabbitmq
+      
+# volumes:
+#   rabbitmq_data: 
