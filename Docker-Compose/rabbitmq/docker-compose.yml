@@ -5,7 +5,7 @@ services:
     container_name: rabbitmq-management
     hostname: rabbitmq
     ports:
-      - "5672:5672"
+      - "5673:5672"
       - "15672:15672"
       - "5552:5552"
     environment:
