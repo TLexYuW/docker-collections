@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./log:/var/log/nginx
+      - ./html:/usr/share/nginx/html
+      - ./etc/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - fastapi-app
+    restart: always
+
+  fastapi-app:
+    build: ./fastapi-app
+    container_name: fastapi-app
+    ports:
+      - 8080:8080
+    restart: always

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nginx + Echo API Demo</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-8">
+            Nginx + Echo API Demo
+        </h1>
+
+        <div class="text-center">
+            <button onclick="testAPI()"
+                class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors duration-200">
+                Test API
+            </button>
+        </div>
+
+        <div id="result" class="mt-6 p-4 bg-gray-50 rounded-lg hidden">
+            <h3 class="font-semibold mb-2">API Response:</h3>
+            <pre id="response-content" class="text-sm bg-white p-3 rounded border overflow-x-auto"></pre>
+        </div>
+
+        <div id="error" class="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg hidden">
+            <h3 class="font-semibold text-red-700 mb-2">Error:</h3>
+            <p id="error-content" class="text-red-600"></p>
+        </div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
+            const responseContent = document.getElementById('response-content');
+            const errorContent = document.getElementById('error-content');
+
+            // 隱藏之前的結果
+            resultDiv.classList.add('hidden');
+            errorDiv.classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/test');
+                const data = await response.json();
+
+                // 顯示成功結果
+                responseContent.textContent = JSON.stringify(data, null, 2);
+                resultDiv.classList.remove('hidden');
+
+            } catch (error) {
+                // 顯示錯誤
+                errorContent.textContent = error.message;
+                errorDiv.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>
